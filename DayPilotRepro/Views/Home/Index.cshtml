@@ -1,0 +1,166 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@*@using DayPilot.Web.Mvc;
+    @using DayPilot.Web.Mvc.Enums
+    @using DayPilot.Web.Mvc.Events.Scheduler;
+    @using DayPilot.Web.Mvc.Enums.Scheduler;
+
+
+    @{
+
+        var config = new DayPilotSchedulerConfig
+        {
+            TimeHeaders = new TimeHeaderCollection
+            {
+                new TimeHeader(GroupBy.Month, "MMMM yy"),
+                new TimeHeader(GroupBy.Week),
+                new TimeHeader(GroupBy.Day)
+            },
+            Api = 2,
+            BackendUrl = "/Home/Backend",
+            CssOnly = true,
+            HeightSpec = HeightSpec.Parent100Pct,
+            Scale = TimeScale.Week,
+            RowMinHeight = 20,
+            EventHeight = 20,
+            AutoRefreshEnabled = false,
+            Theme = "scheduler_transparent",
+            CellGroupBy = GroupBy.Month,
+            WeekStarts = WeekStarts.Monday
+        };
+    }
+    @Html.DayPilotScheduler("dps", config)*@
+
+
+
+
+@using DayPilot.Web.Mvc.Data
+@using DayPilot.Web.Mvc.Enums
+@using DayPilot.Web.Mvc.Enums.Scheduler
+@using DayPilot.Web.Mvc.Events.Scheduler
+@using System.Drawing
+
+@using DayPilot.Web.Mvc;
+@using DayPilot.Web.Mvc.Enums
+@using DayPilot.Web.Mvc.Events.Scheduler;
+@using DayPilot.Web.Mvc.Enums.Scheduler;
+
+
+
+<script type="text/javascript">
+
+/* Event editing helpers - modal dialog */
+	function editEvent(id) {
+	    var modal = new DayPilot.Modal();
+	    modal.onClosed = function (args) {
+	        $.post('@Url.Action("Edit")', args.result, function (result) {
+	            if (result === '"OK"') {
+	                dps.commandCallBack('refresh');
+	            }
+	            dps.clearSelection();
+	        });
+        };
+	    modal.showUrl('@Url.Action("Edit")/' + id);
+    }
+
+    function onEventMoving(args) {
+        if (args.e.resource() === "A" && args.resource === "B") {
+            args.left.enabled = false;
+            args.right.html = "You can't move an event from resource A to B";
+
+            args.allowed = false;
+        }
+    }
+
+
+
+</script>
+
+<div class="note"><b>Note:</b> Read more about the <a href="http://mvc.daypilot.org/scheduler/">ASP.NET MVC scheduler</a>.</div>
+
+<div class="tip">
+    Year:
+    <a href="javascript:dps.commandCallBack('previous');">Previous</a>
+    |
+    <a href="javascript:dps.commandCallBack('this');">This</a>
+    |
+    <a href="javascript:dps.commandCallBack('next');">Next</a>
+</div>
+
+@Html.DayPilotBubble("bubble")
+
+@Html.DayPilotMenu("menu", new DayPilotMenuConfig
+{
+    Items = new DayPilot.Web.Mvc.MenuItemCollection
+    {
+        new DayPilot.Web.Mvc.MenuItem { Text = "Open", Action = MenuItemAction.JavaScript, JavaScript = "alert(e.value());"}
+    }
+})
+
+
+@Html.DayPilotScheduler("dps", new DayPilotSchedulerConfig
+{
+    Scale = TimeScale.Week,
+
+    BackendUrl = Url.Action("Backend", "Home"),
+    Height = 300,
+    HeightSpec = HeightSpec.Max,
+    TimeRangeSelectedHandling = TimeRangeSelectedHandlingType.CallBack,
+    TimeRangeSelectedJavaScript = "alert(start + ' ' + end + ' ' + resource);",
+
+    MultiSelectRectangle = MultiSelectRectangleType.Free,
+    AllowMultiSelect = true,
+    //RectangleEventSelectJavaScript = "rectangleSelect(args)",
+
+    EventMoveHandling = EventMoveHandlingType.Notify,
+    EventResizeHandling = EventResizeHandlingType.Notify,
+    UseEventBoxes = UseEventBoxesType.Always,
+    StartDate = DateTime.Now.Date,
+
+    //week stuff begin
+    Days = 17 * 7,
+    CellWidth = 100,
+    CellDuration = 1440,
+    TimeHeaders = new TimeHeaderCollection(){
+        new TimeHeader(GroupBy.Year),
+        new TimeHeader(GroupBy.Month, "MMMM yy"),
+        new TimeHeader(GroupBy.Week)
+    },
+    WeekStarts = WeekStarts.Monday,
+    //StartDate = FirstDayOfThisWeek(StartDate, _firstDayOfTheWeek);
+
+    // week stuff end
+
+
+
+
+
+    //CellDuration = 1440,
+    // CellGroupBy = GroupBy.Month,
+
+    //TreeEnabled = true,
+
+    //EventClickHandling = EventClickHandlingType.JavaScript,
+    ////EventClickJavaScript = "editEvent(e.value());",
+
+    //ContextMenu = "menu",
+    //EventBubble = "bubble",
+
+    //EventMovingStartEndEnabled = true,
+    //EventResizingStartEndEnabled = true,
+    //TimeRangeSelectingStartEndEnabled = true,
+    //EventDeleteHandling = EventDeleteHandlingType.CallBack,
+
+    //EventMovingJavaScript = "onEventMoving(args)",
+
+    Resources = new ResourceCollection {
+        new Resource("Room A", "A"),
+        new Resource("Room B", "B"),
+        new Resource("Room C", "C"),
+        new Resource("Room D", "D"),
+        new Resource("Room E", "E"),
+
+    }
+})
+

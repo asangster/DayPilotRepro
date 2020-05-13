@@ -1,0 +1,6 @@
+﻿.scheduler_8_shadow_inner {
+    background-color: #666;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    height: 100%;
+}

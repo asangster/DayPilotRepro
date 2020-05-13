@@ -1,0 +1,180 @@
+﻿.scheduler_transparent_selected .scheduler_transparent_event_inner {
+    border-color: red;
+}
+
+.scheduler_transparent_selectionrectangle {
+    background-color: #0000ff;
+    border: 1px solid #000033;
+    opacity: 0.4;
+}
+
+.scheduler_transparent_cellparent {
+    background-color: #eaeaea;
+}
+
+
+.scheduler_transparent_event_inner {
+    padding: 6px 4px 4px 4px;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    bottom: 1px;
+    left: 0px;
+    right: 0px;
+    background: #47afff;
+    border: 1px solid #1066a8;
+    display: flex;
+    align-items: center;
+}
+
+.scheduler_transparent_corner #corner-header, .scheduler_transparent_corner #corner-controls, .scheduler_transparent_corner #corner-controls span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.scheduler_transparent_corner #corner-header {
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 1.5em;
+}
+
+.scheduler_transparent_corner #corner-controls {
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+    .scheduler_transparent_corner #corner-controls span a {
+        text-decoration: none;
+    }
+
+.scheduler_transparent_corner .fa-home, .scheduler_transparent_corner .fa-info-circle {
+    color: #000;
+}
+
+
+.scheduler_transparent_corner .fa-step-forward,
+.scheduler_transparent_corner .fa-step-backward,
+.scheduler_transparent_corner .fa-fast-forward,
+.scheduler_transparent_corner .fa-fast-backward,
+.scheduler_transparent_corner .fa-search-plus,
+.scheduler_transparent_corner .fa-search-minus,
+.scheduler_transparent_corner .fa-home,
+.scheduler_transparent_corner .fa-info,
+.scheduler_transparent_corner .fa-expand,
+.scheduler_transparent_corner .fa-compress,
+.scheduler_transparent_corner .fa-question,
+.tracker-help .fa {
+    background: #408dc1;
+    color: #fff;
+    font-size: 1.1em;
+    padding: 5px;
+    border-radius: 5px;
+    width: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.scheduler_transparent_corner .fa-home,
+.tracker-help .fa-home {
+    color: #fff;
+    background: #d9534f;
+}
+
+.scheduler_transparent_corner .fa-info,
+.scheduler_transparent_corner .fa-question,
+.tracker-help .fa-info,
+.tracker-help .fa-question
+{
+    background: #5cb85c;
+    color: #fff;
+}
+
+.scheduler_transparent_corner #assignment-corner-header {
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 1.5em;
+}
+
+.scheduler_transparent_corner #assignment-corner-controls {
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+    .scheduler_transparent_corner #assignment-corner-controls span a {
+        text-decoration: none;
+        margin-right: 5px;
+    }
+
+.scheduler_transparent_corner #resource-corner-header {
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 1.5em;
+}
+
+.scheduler_transparent_corner #resource-corner-controls {
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+    .scheduler_transparent_corner #resource-corner-controls span a {
+        text-decoration: none;
+        margin-right: 5px;
+    }
+
+
+.scheduler_transparent_corner #plan-resource-corner-header {
+    padding-top: 5px;
+    padding-left: 5px;
+    font-size: 1.5em;
+}
+
+.scheduler_transparent_corner #plan-resource-corner-controls {
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+    .scheduler_transparent_corner #plan-resource-corner-controls span a {
+        text-decoration: none;
+        margin-right: 5px;
+    }
+
+    .scheduler_transparent_corner #plan-resource-corner-controls .fa {
+        margin-right:5px;
+    }
+
+
+
+#zoomOut.inactive, #zoomIn.inactive {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+    #zoomOut.inactive .fa-search-minus, #zoomIn.inactive .fa-search-plus
+    {
+        background: silver;
+        color: #fff;
+    }
+
+#zoomOut.active, #zoomIn.active {
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+    #zoomOut.inactive .fa-search-minus, #zoomIn.inactive .fa-search-plus {
+        background: silver;
+        color: #fff;
+    }
+
+.scheduler_transparent_event_bar_inner {
+    width: 100% !important;
+}
+
+.scheduler_transparent_block {
+    background-color:#ccc;
+    opacity:0.3;
+}
+
+.tracker-help .fa {
+    margin: 2px;
+    width: 15px;
+}
